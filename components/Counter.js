@@ -19,9 +19,9 @@ const Counter = ({ onChange }) => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <button onClick={subtract}>-</button>
+      <button className='counterChange' onClick={subtract}>-</button>
       <h2>{count}</h2>
-      <button onClick={add}>+</button>
+      <button className='counterChange' onClick={add}>+</button>
     </div>
   )
 }
