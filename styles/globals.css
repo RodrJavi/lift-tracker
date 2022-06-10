@@ -1,5 +1,6 @@
 :root{
-  --pink:#BB17F4
+  --pink:#BB17F4;
+  --offWhite:#F1F1F1
 }
 
 html,
@@ -21,8 +22,64 @@ a {
 }
 
 .counterChange{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
   border-radius: 50%;
-  background-color: var(--pink)
+  background-color: var(--pink);
+  height: 35px;
+  width: 35px;
+  color: white;
+  font-size: 1.75em;
+
 }
 
+.counterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.spans {
+  display: flex;
+  align-items: center;
+}
+
+.setCreator {
+  background-color: var(--offWhite);
+}
+
+.setList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-top-left-radius: 1.75em;
+  border-top-right-radius: 1.75em;
+  box-shadow: 0 -1px 10px;
+}
+
+/* .exerciseContainer {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1em;
+} */
+
+.exerciseList {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.491);
+  border-radius: 7px;
+  width: 300px;
+  margin: 0 0 1em 0;
+}
+
+.bigButton {
+  background-color: var(--pink);
+  color: white;
+  width: 300px;
+  border: none;
+  border-radius: 7px;
+  font-size: 20px;
+}

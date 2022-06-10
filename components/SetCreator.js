@@ -39,12 +39,12 @@ const SetCreator = ({onSubmit}) => {
           {exerciseList.map((exercise) => <option key={exercise} value={exercise}></option>)}
         </datalist>
       </div>
-      <div style={{ display: 'flex' }}>
-        <span>Number of sets</span>
+      <div className='counterContainer'>
+        <span className='spans'>Number of sets</span>
         <Counter onChange={sets} />
       </div>
-      <div style={{ display: 'flex' }}>
-        <span>Number of reps</span>
+      <div className='counterContainer'>
+        <span className='spans'>Number of reps</span>
         <Counter onChange={reps} />
       </div>
       <div>

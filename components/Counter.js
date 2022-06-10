@@ -20,7 +20,7 @@ const Counter = ({ onChange }) => {
   return (
     <div style={{ display: 'flex' }}>
       <button className='counterChange' onClick={subtract}>-</button>
-      <h2>{count}</h2>
+      <span className='spans'>{count}</span>
       <button className='counterChange' onClick={add}>+</button>
     </div>
   )
