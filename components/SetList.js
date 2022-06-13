@@ -4,14 +4,15 @@ const SetList = ({ value, onDelete }) => {
       <h2>Exercises</h2>
       <div className="exerciseContainer">
         {value.map((exercise) => (
-          <div className="exerciseList" key={exercise}>
+          <div className="exerciseList" key={exercise.id}>
             <div>
-              <h3>{exercise.exerciseName}</h3> <p>
+              <h3>{exercise.exerciseName}</h3>{" "}
+              <p>
                 Sets:{exercise.setsCount} Reps:
                 {exercise.repsCount} Weight:{exercise.lbsCount}
               </p>
             </div>
-            <button onClick={() => onDelete(exercise.exerciseName)}>Delete</button>
+            <button onClick={() => onDelete(exercise.id)}>Delete</button>
           </div>
         ))}
       </div>

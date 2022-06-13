@@ -1,59 +1,88 @@
-import React, { useState } from 'react'
-import Counter from './Counter'
+import React, { useState } from "react";
+import Counter from "./Counter";
 
-const SetCreator = ({onSubmit}) => {
-
-
+const SetCreator = ({ onSubmit }) => {
   //Pulling values from each counter
-  const [setsCount, setSetsCount] = useState(0)
-  const [repsCount, setRepsCount] = useState(0)
-  const [lbsCount, setLbsCount] = useState(0)
-  const [exerciseName, setExerciseName] = useState('')
+  const [setsCount, setSetsCount] = useState(0);
+  const [repsCount, setRepsCount] = useState(0);
+  const [lbsCount, setLbsCount] = useState(0);
+  const [exerciseName, setExerciseName] = useState("");
   const exerciseList = [
     "Bench press",
     "Barbell back squat",
     "Dumbbell bench press",
     "Triceps pressdown",
-    "Leg extensions"
-  ]
+    "Leg extensions",
+  ];
 
   const sets = (f) => {
-    setSetsCount(f + 1)
-  }
+    setSetsCount(f + 1);
+  };
   const reps = (f) => {
-    setRepsCount(f + 1)
-  }
-
-
-
+    setRepsCount(f + 1);
+  };
 
   return (
+    <div className="setCreator">
+      <div>
+        <div className="nameInput">
+          <input type="text" />
+        </div>
 
-    <div>
-      <div>
-        <input type="text"/>
+        <hr></hr>
+
+        <div>
+          <label htmlFor="exercise">Exercise</label>
+          <input
+            className="nameInput"
+            value={exerciseName}
+            onChange={(e) => {
+              setExerciseName(e.target.value);
+            }}
+            type="text"
+            name="exercise"
+            list="exercises"
+            placeholder="Select Exercise"
+          ></input>
+          <datalist id="exercises">
+            {exerciseList.map((exercise) => (
+              <option key={exercise} value={exercise}></option>
+            ))}
+          </datalist>
+        </div>
       </div>
-      <div>
-        <input value={exerciseName} onChange={(e) => { setExerciseName(e.target.value) }} type="text" list="exercises" placeholder="Select Exercise"></input>
-        <datalist id="exercises">
-          {exerciseList.map((exercise) => <option key={exercise} value={exercise}></option>)}
-        </datalist>
-      </div>
-      <div className='counterContainer'>
-        <span className='spans'>Number of sets</span>
+
+      <div className="counterContainer">
+        <span className="spans">Number of sets</span>
         <Counter onChange={sets} />
       </div>
-      <div className='counterContainer'>
-        <span className='spans'>Number of reps</span>
+
+      <div className="counterContainer">
+        <span className="spans">Number of reps</span>
         <Counter onChange={reps} />
       </div>
-      <div>
-        <span>Weight(lbs)</span>
-        <input type='number' value={lbsCount} onChange={(e) => { setLbsCount(e.target.valueAsNumber) }}></input>
-      </div>
-      <button onClick={()=>{onSubmit({exerciseName, setsCount, repsCount, lbsCount})}}>Add Exercise</button>
-    </div>
-  )
-}
 
-export default SetCreator
+      <div className="counterContainer">
+        <span>Weight(lbs)</span>
+        <input
+          type="number"
+          defaultValue={0}
+          onBlur={(e) => {
+            setLbsCount(e.target.value);
+          }}
+        ></input>
+      </div>
+
+      <button
+        className="bigButton"
+        onClick={() => {
+          onSubmit({ exerciseName, setsCount, repsCount, lbsCount });
+        }}
+      >
+        Add Exercise
+      </button>
+    </div>
+  );
+};
+
+export default SetCreator;

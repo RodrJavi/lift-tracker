@@ -1,29 +1,43 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
 const Counter = ({ onChange }) => {
+  const [value, setValue] = useState("0");
 
-  const [count, setCount] = useState(0)
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    onChange(value);
+  };
 
   const subtract = () => {
-    if (count > 0) {
-      setCount(count - 1)
+    if (value > 0 && !Number.isNaN(parseInt(value))) {
+      setValue(parseInt(value) - 1);
+    } else {
+      setValue("0");
     }
-    onChange(count)
-  }
+    onChange(value);
+  };
 
   const add = () => {
-    setCount(count + 1)
-    onChange(count)
-  }
+    if (!Number.isNaN(parseInt(value))) {
+      setValue(parseInt(value) + 1);
+    } else {
+      setValue("0");
+    }
+    onChange(value);
+  };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <button className='counterChange' onClick={subtract}>-</button>
-      <span className='spans'>{count}</span>
-      <button className='counterChange' onClick={add}>+</button>
+    <div style={{ display: "flex" }}>
+      <button className="counterChange" onClick={subtract}>
+        -
+      </button>
+      <input onChange={handleChange} type="number" value={value}></input>
+      <button className="counterChange" onClick={add}>
+        +
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Counter
+export default Counter;
