@@ -1,19 +1,17 @@
-import React from 'react'
-import Button from './Button'
+import React from "react";
+import { Icon } from "@iconify/react";
 
-const Header = ({onClick}) => {
-
+const Header = ({ onClick }) => {
   // const onClick=()=>{
   //   console.log('click')
   // }
 
   return (
-    <div>
-      <header>
-          <h1>&larr; Create session</h1>
-      </header>
+    <div className="top-banner">
+      <Icon className="left-icon" icon="mdi:arrow-left"></Icon>
+      <h1>Create session</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

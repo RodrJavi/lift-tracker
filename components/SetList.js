@@ -1,10 +1,12 @@
+import { Icon } from "@iconify/react";
+
 const SetList = ({ value, onDelete }) => {
   return (
-    <div className="setList">
+    <div className="set-list">
       <h2>Exercises</h2>
       <div className="exerciseContainer">
         {value.map((exercise) => (
-          <div className="exerciseList" key={exercise.id}>
+          <div className="exercise-list" key={exercise.id}>
             <div>
               <h3>{exercise.exerciseName}</h3>{" "}
               <p>
@@ -12,11 +14,15 @@ const SetList = ({ value, onDelete }) => {
                 {exercise.repsCount} Weight:{exercise.lbsCount}
               </p>
             </div>
-            <button onClick={() => onDelete(exercise.id)}>Delete</button>
+            <Icon
+              icon="mdi:trash-can-outline"
+              className="trash-icon"
+              onClick={() => onDelete(exercise.id)}
+            ></Icon>
           </div>
         ))}
       </div>
-      <button className="bigButton">Create Session</button>
+      <button className="big-button">Create Session</button>
     </div>
   );
 };

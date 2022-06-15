@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Counter from "./Counter";
+import { Icon } from "@iconify/react";
 
 const SetCreator = ({ onSubmit }) => {
   //Pulling values from each counter
-  const [setsCount, setSetsCount] = useState(0);
-  const [repsCount, setRepsCount] = useState(0);
-  const [lbsCount, setLbsCount] = useState(0);
+  const [setsCount, setSetsCount] = useState(1);
+  const [repsCount, setRepsCount] = useState(1);
+  const [lbsCount, setLbsCount] = useState(1);
   const [exerciseName, setExerciseName] = useState("");
   const exerciseList = [
     "Bench press",
@@ -16,25 +17,26 @@ const SetCreator = ({ onSubmit }) => {
   ];
 
   const sets = (f) => {
-    setSetsCount(f + 1);
+    setSetsCount(f);
   };
   const reps = (f) => {
-    setRepsCount(f + 1);
+    setRepsCount(f);
   };
 
+  let canSubmit = setsCount + repsCount + lbsCount;
+
   return (
-    <div className="setCreator">
+    <div className="set-creator">
       <div>
-        <div className="nameInput">
-          <input type="text" />
-        </div>
+        <label htmlFor="title">Title</label>
+        <input className="name-input" type="text" name="title" />
 
         <hr></hr>
 
         <div>
           <label htmlFor="exercise">Exercise</label>
           <input
-            className="nameInput"
+            className="dropdown"
             value={exerciseName}
             onChange={(e) => {
               setExerciseName(e.target.value);
@@ -52,31 +54,35 @@ const SetCreator = ({ onSubmit }) => {
         </div>
       </div>
 
-      <div className="counterContainer">
+      <div className="counter-container">
         <span className="spans">Number of sets</span>
-        <Counter onChange={sets} />
+        <Counter onChange={sets} placeHolder={4} />
       </div>
 
-      <div className="counterContainer">
+      <div className="counter-container">
         <span className="spans">Number of reps</span>
-        <Counter onChange={reps} />
+        <Counter onChange={reps} placeHolder={8} />
       </div>
 
-      <div className="counterContainer">
+      <div className="counter-container">
         <span>Weight(lbs)</span>
         <input
           type="number"
-          defaultValue={0}
+          defaultValue={1}
+          min="1"
           onBlur={(e) => {
             setLbsCount(e.target.value);
           }}
+          style={{ width: 95, height: 25, textAlign: "right" }}
         ></input>
       </div>
 
       <button
-        className="bigButton"
+        className="big-button"
         onClick={() => {
-          onSubmit({ exerciseName, setsCount, repsCount, lbsCount });
+          if (canSubmit >= 3 && exerciseName != "") {
+            onSubmit({ exerciseName, setsCount, repsCount, lbsCount });
+          }
         }}
       >
         Add Exercise

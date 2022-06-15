@@ -1,39 +1,28 @@
 import React from "react";
 import { useState } from "react";
 
-const Counter = ({ onChange }) => {
-  const [value, setValue] = useState("0");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-    onChange(value);
-  };
+const Counter = ({ onChange, placeHolder }) => {
+  const [value, setValue] = useState(placeHolder);
 
   const subtract = () => {
-    if (value > 0 && !Number.isNaN(parseInt(value))) {
-      setValue(parseInt(value) - 1);
-    } else {
-      setValue("0");
+    if (value > 1) {
+      setValue(value - 1);
     }
-    onChange(value);
+    onChange(value - 1);
   };
 
   const add = () => {
-    if (!Number.isNaN(parseInt(value))) {
-      setValue(parseInt(value) + 1);
-    } else {
-      setValue("0");
-    }
-    onChange(value);
+    setValue(value + 1);
+    onChange(value + 1);
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      <button className="counterChange" onClick={subtract}>
+    <div className="counter">
+      <button className="counter-change" onClick={subtract}>
         -
       </button>
-      <input onChange={handleChange} type="number" value={value}></input>
-      <button className="counterChange" onClick={add}>
+      <span>{value}</span>
+      <button className="counter-change" onClick={add}>
         +
       </button>
     </div>
