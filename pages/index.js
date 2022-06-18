@@ -1,7 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
+import Image from "next/image";
+import SaveStuff from "/components/SaveStuff";
 
 export default function Home() {
+  let exerciseSession;
+
   return (
     <div>
       <Head>
@@ -10,8 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
-
+      <SaveStuff></SaveStuff>
     </div>
-  )
+  );
 }

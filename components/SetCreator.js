@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Counter from "./Counter";
 import { Icon } from "@iconify/react";
 
-const SetCreator = ({ onSubmit }) => {
+const SetCreator = ({ onSubmit, dayName }) => {
   //Pulling values from each counter
-  const [setsCount, setSetsCount] = useState(1);
-  const [repsCount, setRepsCount] = useState(1);
+  const [setsCount, setSetsCount] = useState(4);
+  const [repsCount, setRepsCount] = useState(8);
   const [lbsCount, setLbsCount] = useState(1);
   const [exerciseName, setExerciseName] = useState("");
   const exerciseList = [
@@ -29,7 +29,16 @@ const SetCreator = ({ onSubmit }) => {
     <div className="set-creator">
       <div>
         <label htmlFor="title">Title</label>
-        <input className="name-input" type="text" name="title" />
+        <input
+          className="name-input"
+          type="text"
+          name="title"
+          onBlur={(e) => {
+            dayName(e.target.value);
+          }}
+        />
+
+        {/* <pre>{title}</pre> */}
 
         <hr></hr>
 

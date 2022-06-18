@@ -7,8 +7,8 @@ const Counter = ({ onChange, placeHolder }) => {
   const subtract = () => {
     if (value > 1) {
       setValue(value - 1);
+      onChange(value - 1);
     }
-    onChange(value - 1);
   };
 
   const add = () => {

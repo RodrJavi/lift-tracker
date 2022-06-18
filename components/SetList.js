@@ -1,10 +1,10 @@
 import { Icon } from "@iconify/react";
 
-const SetList = ({ value, onDelete }) => {
+const SetList = ({ value, onDelete, createSession }) => {
   return (
     <div className="set-list">
       <h2>Exercises</h2>
-      <div className="exerciseContainer">
+      <div>
         {value.map((exercise) => (
           <div className="exercise-list" key={exercise.id}>
             <div>
@@ -22,7 +22,9 @@ const SetList = ({ value, onDelete }) => {
           </div>
         ))}
       </div>
-      <button className="big-button">Create Session</button>
+      <button className="big-button" onClick={createSession}>
+        Create Session
+      </button>
     </div>
   );
 };
