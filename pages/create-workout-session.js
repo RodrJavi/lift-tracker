@@ -2,7 +2,8 @@ import Head from "next/head";
 import Header from "/components/Header";
 import SetCreator from "/components/SetCreator";
 import SetList from "/components/SetList";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import swal from "sweetalert";
 
 export default function CreateWorkoutSession() {
   const [exerciseObject, setexerciseObject] = useState([
@@ -44,12 +45,22 @@ export default function CreateWorkoutSession() {
     setexerciseObject(exerciseObject.filter((item) => item.id !== id));
   };
 
+  const useLocalStorage = (value) =>{
+    const newValue = JSON.stringify(value)
+    window.localStorage.setItem("sessionList", newValue)
+  }
+
   const createSession = () => {
-    console.log("Session created called " + title);
-    const fullSession = { title, ...exerciseObject };
-    setExerciseSession([fullSession, ...exerciseSession]);
-    window.localStorage.setItem("sessionList", JSON.stringify(exerciseSession));
+    if (title != ""){
+    console.log("Session created called " + title)
+    const fullSession = { title, ...exerciseObject }
+    setExerciseSession([fullSession, ...exerciseSession])}
+    else {
+      swal("Please enter a name for the session.")
+    }
   };
+
+  //useEffect(()=>{useLocalStorage(exerciseSession), exerciseSession})
 
   return (
     <div className="create-session-background">
