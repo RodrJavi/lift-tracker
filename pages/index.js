@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import SaveStuff from "/components/SaveStuff";
+import DayHolder from "components/DayHolder";
 
 export default function Home() {
   let exerciseSession;
@@ -13,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SaveStuff></SaveStuff>
+      <SaveStuff />
     </div>
   );
 }

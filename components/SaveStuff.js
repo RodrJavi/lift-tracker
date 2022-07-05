@@ -1,56 +1,31 @@
 import React, { useState, useEffect, Component } from "react";
+import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
+import Link from "next/link";
 
-
-const saveStuff = () => {
+const saveStuff = ({}) => {
   const [count, setCount] = useState(0);
-  const [sessions, setSessions] = useState([]);
-  //const [sessions, setSessions] = useState(localStorage.getItem("sessionList"))
-  // const [sessions, setSessions] = useState(()=> {
-  //   let value;
-  //   try {
-  //     value = JSON.parse(window.localStorage.getItem("sessionList"));  
-  //   } catch(e) {
-  //     value=0;
-  //   }
-  //   return value;
-  // })
-  //
-  // const [count, setCount] = useState(() => {
-  //   let value;
-  //   try {
-  //     value = JSON.parse(window.localStorage.getItem("buttonCount") || "0");
-  //   } catch (e) {
-  //     value = 0;
-  //   }
-  //   return value;
-  // });
-  // useEffect(() => {
-  //   window.localStorage.setItem("buttonCount", count);
-  // }, [count]);
+  const sessionList = useReadLocalStorage("sessionList");
+  // const [works, setWorks] = useState([{ sessionList }]);
   return (
     <div>
-    <button
-      onClick={() => {
-        const works = JSON.parse((localStorage.getItem("sessionList")));
-        console.log(works);
-        setSessions(works);
-      }}
-    >
-      {count}
-    </button>
-      {/* {JSON.stringify(sessions[0].title, 2, null)} */}
+      <button
+        onClick={() => {
+          console.log(sessionList);
+        }}
+      >
+        {count}
+      </button>
+      {/* {JSON.stringify(sessionList[0].title, 2, null)} */}
 
       <div>
-        {sessions.map((day) => (
-          <div key={day.title}>
-            {day.title}
-          </div>
-        )
-        )}
+        {[{ sessionList }].map((day) => (
+          <div key={day.title}>{day.title}</div>
+        ))}
       </div>
 
-
-
+      <button>
+        <Link href="/create-workout-session">To create session </Link>
+      </button>
     </div>
   );
 };

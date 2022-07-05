@@ -2,8 +2,9 @@ import Head from "next/head";
 import Header from "/components/Header";
 import SetCreator from "/components/SetCreator";
 import SetList from "/components/SetList";
-import { useState, useEffect} from "react";
+import { useState } from "react";
 import swal from "sweetalert";
+import { useLocalStorage } from "usehooks-ts";
 
 export default function CreateWorkoutSession() {
   const [exerciseObject, setexerciseObject] = useState([
@@ -34,6 +35,8 @@ export default function CreateWorkoutSession() {
 
   const [exerciseSession, setExerciseSession] = useState([]);
 
+  const [sessionList, setSessionList] = useLocalStorage("sessionList", []);
+
   const addItem = (item) => {
     const id = Math.floor(Math.random() * 10000) + 1;
     const newExercise = { id, ...item };
@@ -45,22 +48,15 @@ export default function CreateWorkoutSession() {
     setexerciseObject(exerciseObject.filter((item) => item.id !== id));
   };
 
-  const useLocalStorage = (value) =>{
-    const newValue = JSON.stringify(value)
-    window.localStorage.setItem("sessionList", newValue)
-  }
-
   const createSession = () => {
-    if (title != ""){
-    console.log("Session created called " + title)
-    const fullSession = { title, ...exerciseObject }
-    setExerciseSession([fullSession, ...exerciseSession])}
-    else {
-      swal("Please enter a name for the session.")
+    if (title != "") {
+      console.log("Session created called " + title);
+      const fullSession = { title, ...exerciseObject };
+      setSessionList([fullSession, ...sessionList]);
+    } else {
+      swal("Please enter a name for the session.");
     }
   };
-
-  //useEffect(()=>{useLocalStorage(exerciseSession), exerciseSession})
 
   return (
     <div className="create-session-background">
@@ -73,8 +69,6 @@ export default function CreateWorkoutSession() {
       <div className="create-session">
         <SetCreator onSubmit={addItem} dayName={setTitle}></SetCreator>
       </div>
-      {/* <span>{title}</span> */}
-      {JSON.stringify(exerciseSession, 2, null)}
       {exerciseObject.length > 0 ? (
         <SetList
           value={exerciseObject}
@@ -88,7 +82,7 @@ export default function CreateWorkoutSession() {
       )}
       <button
         onClick={() => {
-          window.localStorage.removeItem("sessionList");
+          setSessionList([]);
         }}
       >
         CLEAR LOCAL STORAGE BUTTON
