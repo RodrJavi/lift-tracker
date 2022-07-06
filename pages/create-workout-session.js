@@ -8,27 +8,27 @@ import { useLocalStorage } from "usehooks-ts";
 
 export default function CreateWorkoutSession() {
   const [exerciseObject, setexerciseObject] = useState([
-    {
-      id: 1,
-      exerciseName: "Bench press",
-      setsCount: 4,
-      repsCount: 8,
-      lbsCount: 135,
-    },
-    {
-      id: 2,
-      exerciseName: "Shoulder press",
-      setsCount: 3,
-      repsCount: 12,
-      lbsCount: 55,
-    },
-    {
-      id: 3,
-      exerciseName: "Tricep Pressdown",
-      setsCount: 2,
-      repsCount: 15,
-      lbsCount: 50,
-    },
+    // {
+    //   id: 1,
+    //   exerciseName: "Bench press",
+    //   setsCount: 4,
+    //   repsCount: 8,
+    //   lbsCount: 135,
+    // },
+    // {
+    //   id: 2,
+    //   exerciseName: "Shoulder press",
+    //   setsCount: 3,
+    //   repsCount: 12,
+    //   lbsCount: 55,
+    // },
+    // {
+    //   id: 3,
+    //   exerciseName: "Tricep Pressdown",
+    //   setsCount: 2,
+    //   repsCount: 15,
+    //   lbsCount: 50,
+    // },
   ]);
 
   const [title, setTitle] = useState("");

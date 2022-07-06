@@ -5,20 +5,26 @@ import Link from "next/link";
 const saveStuff = ({}) => {
   const [count, setCount] = useState(0);
   const sessionList = useReadLocalStorage("sessionList");
-  // const [works, setWorks] = useState([{ sessionList }]);
+  const [works, setWorks] = useState([]);
+
+  useEffect(()=>{
+    setWorks(sessionList);
+  }, [sessionList])
+  
   return (
     <div>
       <button
         onClick={() => {
           console.log(sessionList);
+          setWorks(sessionList);
         }}
       >
         {count}
       </button>
-      {/* {JSON.stringify(sessionList[0].title, 2, null)} */}
+      {/* {JSON.stringify(sessionList.title, 2, null)} */}
 
       <div>
-        {[{ sessionList }].map((day) => (
+        {works.map((day) => (
           <div key={day.title}>{day.title}</div>
         ))}
       </div>
