@@ -53,6 +53,7 @@ export default function CreateWorkoutSession() {
       console.log("Session created called " + title);
       const fullSession = { title, ...exerciseObject };
       setSessionList([fullSession, ...sessionList]);
+      swal({ icon: "success", text: "Session created!" });
     } else {
       swal("Please enter a name for the session.");
     }
