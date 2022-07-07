@@ -4,20 +4,24 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 
 const dayHolder = ({}) => {
-  const [count, setCount] = useState(0);
   const sessionList = useReadLocalStorage("sessionList");
   const [works, setWorks] = useState([]);
+  const [currentWorkout,setCurrentWorkout] = useLocalStorage("currentWorkout", []);
 
   useEffect(() => {
     setWorks(sessionList);
   }, [sessionList]);
+
+  const startSession = (train) =>{
+    setCurrentWorkout(train);
+  }
 
   return (
     <div className="library">
       <h2>Library</h2>
       <div className="day-list">
         {works.map((day) => (
-          <div className="day-label" key={day.title}>
+          <div onClick={()=>{startSession(day)}} className="day-label" key={day.title}>
             <span>{day.title}</span>
             <Icon className="menu-icon" icon="mdi:dots-vertical" />
           </div>
