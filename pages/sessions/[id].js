@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useLocalStorage } from "usehooks-ts";
+import Header from "components/Header";
+import { useState } from "react";
 
 const Session = () => {
   const router = useRouter();
@@ -9,13 +11,24 @@ const Session = () => {
 
   const currentSession = sessionList.find((session) => session.id == id);
 
-  return (
-    <>
-      <p>Session: {id}</p>
-      <pre>{JSON.stringify(currentSession, null, 2)}</pre>
-      <div>
+  const increment = (100/currentSession.exerciseObject.length);
+
+  const [completed, setCompleted] = useState(0);
+
+  const increaseProgress = () =>{
+    setCompleted(completed+increment);
+  }
+
+  return ( 
+      <div className="create-session-background">
+        <Header completion={completed} text={currentSession.title}/>
+
+        {/* {JSON.stringify(currentSession.exerciseObject.length)} */}
+        {increment}
+        {completed}
+    
         {currentSession.exerciseObject.map((exercise) => (
-          <div className="exercise-list" key={exercise.id}>
+          <div onClick={increaseProgress} className="exercise-list" key={exercise.id}>
             <h3>{exercise.exerciseName}</h3>{" "}
             <p>
               Sets:{exercise.setsCount} Reps:
@@ -24,7 +37,6 @@ const Session = () => {
           </div>
         ))}
       </div>
-    </>
   );
 };
 

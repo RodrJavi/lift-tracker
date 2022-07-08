@@ -71,7 +71,7 @@ export default function CreateWorkoutSession() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header></Header>
+      <Header text="Create Session"></Header>
 
       <div className="create-session">
         <SetCreator onSubmit={addItem} dayName={setTitle}></SetCreator>
