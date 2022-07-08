@@ -6,7 +6,9 @@ const Header = ({ onClick }) => {
   return (
     <div className="top-banner">
       <Link href="/">
-        <Icon className="left-icon" icon="mdi:arrow-left"></Icon>
+        <a>
+          <Icon className="left-icon" icon="mdi:arrow-left"></Icon>
+        </a>
       </Link>
       <h1>Create session</h1>
     </div>
