@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useLocalStorage } from "usehooks-ts";
 import Header from "components/Header";
 import { useState } from "react";
+import ExerciseProgress from "components/ExerciseProgress";
 
 const Session = () => {
   const router = useRouter();
@@ -24,8 +25,8 @@ const Session = () => {
         <Header completion={completed} text={currentSession.title}/>
 
         {/* {JSON.stringify(currentSession.exerciseObject.length)} */}
-        {increment}
-        {completed}
+        {/* {increment} */}
+        {/* {completed} */}
     
         {currentSession.exerciseObject.map((exercise) => (
           <div onClick={increaseProgress} className="exercise-list" key={exercise.id}>
@@ -34,6 +35,7 @@ const Session = () => {
               Sets:{exercise.setsCount} Reps:
               {exercise.repsCount} Weight:{exercise.lbsCount}
             </p>
+            <ExerciseProgress current={exercise.setsCount}></ExerciseProgress>
           </div>
         ))}
       </div>
