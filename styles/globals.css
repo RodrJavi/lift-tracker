@@ -244,10 +244,3 @@ input[type=number] {
 .main-page {
   background-color: var(--offWhite);
 }
-
-.square {
-  height: 15px;
-  width: 15px;
-  background-color: transparent;
-  border: 1px solid black;
-}

@@ -1,8 +1,23 @@
+const ExerciseProgress = ({ current, max }) => {
+  const green = {
+    backgroundColor: "green",
+  };
 
-const ExerciseProgress = ({current, max}) => {
-  return (
-    [...Array(current)].map((i) => <span key={i} className="square"></span>)
-  )
-}
+  const purple = {
+    backgroundColor: "#BB17F4",
+  };
 
-export default ExerciseProgress
+  const square = {
+    height: "15px",
+    width: "15px",
+    border: "1px solid black",
+  };
+
+  return [...Array(max)].map((e, i) => (
+    <span key={i} style={square}>
+      {i}
+    </span>
+  ));
+};
+
+export default ExerciseProgress;
