@@ -16,10 +16,10 @@ const Session = () => {
 
   const [completed, setCompleted] = useState(0);
 
-  const [now, setNow] = useState(-1);
+  // const [now, setNow] = useState(-1);
 
   const increaseProgress = () => {
-    setCompleted(completed + increment);
+    // setCompleted(completed + increment);
     setNow(now + 1);
   };
 
@@ -33,7 +33,7 @@ const Session = () => {
 
       {currentSession.exerciseObject.map((exercise) => (
         <div
-          onClick={increaseProgress}
+          // onClick={increaseProgress}
           className="exercise-list"
           key={exercise.id}
         >
@@ -43,7 +43,7 @@ const Session = () => {
             {exercise.repsCount} Weight:{exercise.lbsCount}
           </p>
           <ExerciseProgress
-            current={now}
+            // current={now}
             max={exercise.setsCount}
           ></ExerciseProgress>
         </div>

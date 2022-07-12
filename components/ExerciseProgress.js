@@ -1,21 +1,18 @@
-const ExerciseProgress = ({ current, max }) => {
-  const green = {
-    backgroundColor: "green",
+import { useState } from "react";
+
+const ExerciseProgress = ({onClick, current, max }) => {
+  
+
+  const increaseProgress = () => {
+    // setCompleted(completed + increment);
+    setNow(now + 1);
   };
 
-  const purple = {
-    backgroundColor: "#BB17F4",
-  };
-
-  const square = {
-    height: "15px",
-    width: "15px",
-    border: "1px solid black",
-  };
+  const [now, setNow] = useState(0);
 
   return [...Array(max)].map((e, i) => (
-    <span key={i} style={square}>
-      {i}
+    <span key={i} className={`${(now <= i ? "square" : "purple")} ${(now >= max && "green")} square`} onClick={increaseProgress}>
+      {max}
     </span>
   ));
 };

@@ -244,3 +244,17 @@ input[type=number] {
 .main-page {
   background-color: var(--offWhite);
 }
+
+.green {
+  background-color: green;
+}
+
+.purple{
+  background-color: #BB17F4;
+}
+
+.square {
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+}
