@@ -3,6 +3,7 @@ import { useLocalStorage } from "usehooks-ts";
 import Header from "components/Header";
 import { useState } from "react";
 import ExerciseProgress from "components/ExerciseProgress";
+import ProgressBar from "components/ProgressBar";
 
 const Session = () => {
   const router = useRouter();
@@ -12,20 +13,22 @@ const Session = () => {
 
   const currentSession = sessionList.find((session) => session.id == id);
 
-  const increment = 100 / currentSession.exerciseObject.length;
+  const percentage = 100 / currentSession?.exerciseObject.length ?? 100;
 
   const [completed, setCompleted] = useState(0);
 
   // const [now, setNow] = useState(-1);
 
   const increaseProgress = () => {
-    // setCompleted(completed + increment);
-    setNow(now + 1);
+    setCompleted(completed + percentage);
   };
+
+  if (!currentSession) return <div>loading...</div>;
 
   return (
     <div className="create-session-background">
       <Header completion={completed} text={currentSession.title} />
+      <ProgressBar completion={completed} />
 
       {/* {JSON.stringify(currentSession.exerciseObject.length)} */}
       {/* {increment} */}
@@ -33,9 +36,9 @@ const Session = () => {
 
       {currentSession.exerciseObject.map((exercise) => (
         <div
-          // onClick={increaseProgress}
-          className="exercise-list"
+          className="exercise-list-item"
           key={exercise.id}
+          onClick={increaseProgress}
         >
           <h3>{exercise.exerciseName}</h3>{" "}
           <p>

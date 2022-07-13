@@ -87,7 +87,7 @@ a {
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.514);
 }
 
-.exercise-list {
+.exercise-list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
