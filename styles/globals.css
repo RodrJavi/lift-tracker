@@ -1,6 +1,7 @@
 :root{
   --pink:#BB17F4;
-  --offWhite:#F1F1F1
+  --offWhite:#F1F1F1;
+  --lightgreen:#17f4a5;
 }
 
 html,
@@ -215,10 +216,11 @@ input[type=number] {
   border-radius: 50%;
   background-color: var(--pink);
   color: white;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   position: absolute;
-  bottom: 15px;
+  bottom: -15px;
+  right: -10px;
 }
 
 .plus-icon-holder{
@@ -256,7 +258,8 @@ input[type=number] {
 .square {
   height: 15px;
   width: 15px;
-  border: 1px solid black;
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
   padding: 3px;
 }
 
@@ -264,11 +267,13 @@ input[type=number] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.491);
   border-radius: 7px;
   width: 300px;
   height: 95px;
   padding: 10px;
+  margin: 10px;
 }
 
 .workout-label {
@@ -293,6 +298,7 @@ input[type=number] {
 .progress-button {
   height: 45px;
   width: 45px;
+  border: 2px solid black;
   border-radius: 9px;
   background-color: var(--pink);
 }
@@ -301,7 +307,30 @@ input[type=number] {
   background-color: #8018a3;
 }
 
+.progress-button:disabled {
+  border: 2px solid black;
+}
+
 .combo {
   display: flex;
   gap: 5px;
+}
+
+.bgbg {
+  background-color: #17f4a5;
+}
+
+.current-workout-background {
+  background-color: var(--offWhite);
+}
+
+.current-workout-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.current-workout-list::-webkit-scrollbar {
+  display: none;
 }

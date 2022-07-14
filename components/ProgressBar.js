@@ -3,8 +3,9 @@ import React from "react";
 const ProgressBar = ({ completion }) => {
   const remaining = {
     width: "100%",
-    backgroundColor: "gray",
+    backgroundColor: "#ababab",
     height: "10px",
+    marginBottom: "15px",
   };
 
   const completed = {

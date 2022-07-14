@@ -9,10 +9,16 @@ const ExerciseProgress = ({ value = 0 , max, overall }) => {
   const [current, setCurrent] = useState(value);
 
   function getBackground(i, current) {
-    if (current >= max) return "green";
+    if (current >= max) return "var(--lightgreen)";
     if (current > i) return "var(--pink)";
     return "transparent";
   }
+
+  function getButton(current) {
+    if (current >= max) return "#ababab"
+    return "var(--pink)";
+  }
+
   return (
   <div className="combo">
     <div className="progress-blocks">
@@ -28,7 +34,9 @@ const ExerciseProgress = ({ value = 0 , max, overall }) => {
         </span>
       ))}
     </div>
-    <button className="progress-button" onClick={increaseProgress}></button>
+    <button disabled={current >= max} className="progress-button" style={{
+            background: getButton(current),
+          }} onClick={increaseProgress}></button>
   </div>
 )
 };

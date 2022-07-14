@@ -24,7 +24,7 @@ const Session = () => {
   if (!currentSession) return <div>loading...</div>;
 
   return (
-    <div className="create-session-background">
+    <div className="current-workout-background">
       <Header completion={completed} text={currentSession.title} />
       <ProgressBar completion={completed} />
 
@@ -32,24 +32,26 @@ const Session = () => {
       {/* {increment} */}
       {/* {completed} */}
 
-      {currentSession.exerciseObject.map((exercise) => (
-        <div
-          className="in-progress-item"
-          key={exercise.id}
-        >
-          <div className="workout-label">
-          <h3>{exercise.exerciseName}</h3>{" "}
-            <span>
-              Reps:
-              {exercise.repsCount} Weight:{exercise.lbsCount}lbs
-            </span>
+      <div className="current-workout-list">
+        {currentSession.exerciseObject.map((exercise) => (
+          <div
+            className="in-progress-item"
+            key={exercise.id}
+          >
+            <div className="workout-label">
+            <h3>{exercise.exerciseName}</h3>{" "}
+              <span>
+                Reps:
+                {exercise.repsCount} Weight:{exercise.lbsCount}lbs
+              </span>
+            </div>
+            <ExerciseProgress
+                  max={exercise.setsCount}
+                  overall={increaseProgress}
+                />
           </div>
-          <ExerciseProgress
-                max={exercise.setsCount}
-                overall={increaseProgress}
-              />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
