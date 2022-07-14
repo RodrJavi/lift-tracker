@@ -4,6 +4,7 @@ import Header from "components/Header";
 import { useState } from "react";
 import ExerciseProgress from "components/ExerciseProgress";
 import ProgressBar from "components/ProgressBar";
+import swal from "sweetalert";
 
 const Session = () => {
   const router = useRouter();
@@ -17,8 +18,13 @@ const Session = () => {
 
   const [completed, setCompleted] = useState(0);
 
-  const increaseProgress = (small) => {
+  const increaseProgress = () => {
     setCompleted(completed + percentage);
+    completed >= (100 - (percentage + 0.1)) && swal({
+      icon: "success",
+      title: "Workout finished!",
+      text: "Well done!",
+    });
   };
 
   if (!currentSession) return <div>loading...</div>;
@@ -27,10 +33,6 @@ const Session = () => {
     <div className="current-workout-background">
       <Header completion={completed} text={currentSession.title} />
       <ProgressBar completion={completed} />
-
-      {/* {JSON.stringify(currentSession.exerciseObject.length)} */}
-      {/* {increment} */}
-      {/* {completed} */}
 
       <div className="current-workout-list">
         {currentSession.exerciseObject.map((exercise) => (

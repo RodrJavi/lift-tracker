@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 const ExerciseProgress = ({ value = 0 , max, overall }) => {
   const increaseProgress = () => {
@@ -12,11 +13,6 @@ const ExerciseProgress = ({ value = 0 , max, overall }) => {
     if (current >= max) return "var(--lightgreen)";
     if (current > i) return "var(--pink)";
     return "transparent";
-  }
-
-  function getButton(current) {
-    if (current >= max) return "#ababab"
-    return "var(--pink)";
   }
 
   return (
@@ -34,9 +30,7 @@ const ExerciseProgress = ({ value = 0 , max, overall }) => {
         </span>
       ))}
     </div>
-    <button disabled={current >= max} className="progress-button" style={{
-            background: getButton(current),
-          }} onClick={increaseProgress}></button>
+    <button disabled={current >= max} className="progress-button" onClick={increaseProgress}><Icon className="check-icon" icon='mdi:check'></Icon></button>
   </div>
 )
 };

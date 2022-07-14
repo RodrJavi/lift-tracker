@@ -11,7 +11,7 @@ const ProgressBar = ({ completion }) => {
   const completed = {
     width: `${completion}%`,
     maxWidth: "100%",
-    backgroundColor: "var(--pink)",
+    backgroundColor: `${completion >= 100 ? "var(--lightgreen)" : "var(--pink)"}` ,
     height: "10px",
     transition: "all 0.2s ease-in-out",
   };

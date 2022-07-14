@@ -86,6 +86,8 @@ a {
   border-top-right-radius: 1.75em;
   margin-top: 20px;
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.514);
+  max-height: 500px;
+
 }
 
 .exercise-list-item {
@@ -301,6 +303,10 @@ input[type=number] {
   border: 2px solid black;
   border-radius: 9px;
   background-color: var(--pink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
 .progress-button:active {
@@ -309,6 +315,7 @@ input[type=number] {
 
 .progress-button:disabled {
   border: 2px solid black;
+  background-color: gray;
 }
 
 .combo {
@@ -329,8 +336,20 @@ input[type=number] {
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
+  max-height: 500px;
 }
 
 .current-workout-list::-webkit-scrollbar {
   display: none;
+}
+
+.check-icon {
+  height: 45px;
+  width: 45px;
+  color: white;
+}
+
+.swal-modal {
+  width: 330px;
+  height: 300px;
 }
