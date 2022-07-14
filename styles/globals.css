@@ -257,4 +257,51 @@ input[type=number] {
   height: 15px;
   width: 15px;
   border: 1px solid black;
+  padding: 3px;
+}
+
+.in-progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.491);
+  border-radius: 7px;
+  width: 300px;
+  height: 95px;
+  padding: 10px;
+}
+
+.workout-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.workout-label h3 {
+  margin: 0;
+}
+
+.progress-blocks{
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  flex-flow: wrap;
+  width: 70px;
+}
+
+.progress-button {
+  height: 45px;
+  width: 45px;
+  border-radius: 9px;
+  background-color: var(--pink);
+}
+
+.progress-button:active {
+  background-color: #8018a3;
+}
+
+.combo {
+  display: flex;
+  gap: 5px;
 }

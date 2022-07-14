@@ -6,7 +6,7 @@ const SetList = ({ value, onDelete, createSession }) => {
       <h2>Exercises</h2>
       <div>
         {value.map((exercise) => (
-          <div className="exercise-list" key={exercise.id}>
+          <div className="exercise-list-item" key={exercise.id}>
             <div>
               <h3>{exercise.exerciseName}</h3>{" "}
               <p>
