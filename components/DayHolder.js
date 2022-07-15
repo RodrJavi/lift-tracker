@@ -3,7 +3,7 @@ import { useLocalStorage } from "usehooks-ts";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 
-const dayHolder = ({}) => {
+const DayHolder = ({}) => {
   const [localStorageSessions, setLocalStorageSessions] = useLocalStorage(
     "sessionList",
     []
@@ -42,4 +42,4 @@ const dayHolder = ({}) => {
   );
 };
 
-export default dayHolder;
+export default DayHolder;
