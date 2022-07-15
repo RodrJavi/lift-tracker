@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 const Counter = ({ onChange, placeHolder }) => {
   const [value, setValue] = useState(placeHolder);
@@ -19,11 +20,11 @@ const Counter = ({ onChange, placeHolder }) => {
   return (
     <div className="counter">
       <button className="counter-change" onClick={subtract}>
-        -
+        <Icon className="counter-icon" icon="mdi:minus"/>
       </button>
       <span>{value}</span>
       <button className="counter-change" onClick={add}>
-        +
+      <Icon className="counter-icon" icon="mdi:plus"/>
       </button>
     </div>
   );
