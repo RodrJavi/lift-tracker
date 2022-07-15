@@ -18,6 +18,7 @@ const dayHolder = ({}) => {
     <div className="library">
       <h2>Library</h2>
 
+      {sessionList.length >0 ?(
       <div className="day-list">
         {sessionList.map((session) => (
           <Link key={session.id} href={`/sessions/${session.id}`}>
@@ -27,7 +28,8 @@ const dayHolder = ({}) => {
             </a>
           </Link>
         ))}
-      </div>
+      </div>) : 
+      (<div className="empty-library"><span>No Sessions created</span></div>)}
 
       <div className="plus-icon-holder">
         <Link href="/create-workout-session">

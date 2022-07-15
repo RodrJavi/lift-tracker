@@ -94,7 +94,7 @@ export default function CreateWorkoutSession() {
           setSessionList([]);
         }}
       >
-        CLEAR LOCAL STORAGE BUTTON
+        CLEAR LIBRARY
       </button>
     </div>
   );

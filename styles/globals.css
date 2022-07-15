@@ -27,7 +27,7 @@ a {
   align-items: center;
   background-color: white;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.096);
-  max-height: 60px;
+  height: 60px;
 }
 
 .left-icon{
@@ -232,10 +232,13 @@ input[type=number] {
 }
 
 .c-placeholder {
-  border: 2px solid black;
+  border: 2px dotted black;
   width: 300px;
   height: 200px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .history {
@@ -352,4 +355,9 @@ input[type=number] {
 .swal-modal {
   width: 330px;
   height: 300px;
+}
+
+.empty-library {
+  display: flex;
+  justify-content: center;
 }
